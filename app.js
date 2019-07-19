@@ -4,7 +4,7 @@ const fs = require('fs');
 const app = new Koa();
 const path = require('path');
 const KoaStatic = require('koa-static');
-app.use(KoaStatic('./'));
+app.use(KoaStatic('./static'));
 
 app.listen(8000);
 opn('http://localhost:8000/')
