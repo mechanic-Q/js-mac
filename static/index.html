@@ -56,15 +56,40 @@
                     this.classNme+="active";
                 }
             }
+            
             var navBar = document.getElementById('nav');
             var titleTop = navBar.offsetTop;
+            var sTop=document.getElementById("service").offsetTop;
+            var aTop=document.getElementById("about").offsetTop;
+            var cTop=document.getElementById("contact").offsetTop;
+            function change(navIndex){
+                if (oList[navIndex].className.indexOf('active') === -1) {
+                    for(var j=0;j<oList.length;j++){
+                        if (j === navIndex) {
+                            oList[j].className+="active";
+                        } else {
+                            oList[j].className ="";
+                        }
+                    }
+                }
+            }
+
             document.onscroll = function(){
+                var btop = document.body.scrollTop || document.documentElement.scrollTop;
                 var btop = document.body.scrollTop || document.documentElement.scrollTop;
                 if (btop > titleTop) {
                     navBar.className = "fix";
-                    console.log(navBar)
-                }else {
+                } else {
                     navBar.className = "";
+                }
+                if (btop > sTop -100 && btop <= aTop -100) {
+                    change(1);
+                } else if(btop > aTop -100 && btop <= cTop -200){
+                    change(2);
+                } else if (btop > cTop -200){
+                    change(3);
+                } else if (btop < 100 ){
+                    change(0);
                 }
             }
         </script>

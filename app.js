@@ -9,3 +9,6 @@ app.use(KoaStatic('./static'));
 app.listen(8000);
 opn('http://localhost:8000/')
 console.log('恭喜你，服务器启动成功：复制 http://localhost:8000/ 到浏览器即可访问');
+if (process.env.NODE_ENV  !== 'production') {
+	cp.exec('open http://localhost:8000/');
+}
